@@ -1,0 +1,27 @@
+initialize:
+  - run: |
+      set -e
+      ./mvnw -q -DskipTests package
+maintenance:
+  - run: |
+      set -e
+      java -version
+knowledge:
+  - name: setup
+    contents: |
+      ./mvnw -q -DskipTests package
+  - name: build
+    contents: |
+      ./mvnw -q -DskipTests package
+  - name: test
+    contents: |
+      ./mvnw test
+  - name: lint
+    contents: |
+      ./mvnw checkstyle:check
+  - name: startup
+    contents: |
+      ./mvnw spring-boot:run
+      # API em http://localhost:9966/petclinic/
+      # Health: http://localhost:9966/petclinic/actuator/health
+      # Swagger: http://localhost:9966/petclinic/swagger-ui.html
