@@ -52,9 +52,14 @@ INSERT INTO visits (pet_id, visit_date, description) SELECT 8, '2011-03-04', 'ra
 INSERT INTO visits (pet_id, visit_date, description) SELECT 8, '2009-06-04', 'neutered' WHERE NOT EXISTS (SELECT * FROM visits WHERE id=3);
 INSERT INTO visits (pet_id, visit_date, description) SELECT 7, '2008-09-04', 'spayed' WHERE NOT EXISTS (SELECT * FROM visits WHERE id=4);
 
-INSERT INTO users(username, password, enabled) SELECT 'admin', '$2a$10$ymaklWBnpBKlgdMgkjWVF.GMGyvH8aDuTK.glFOaKw712LHtRRymS', TRUE
+INSERT INTO users(username, password, enabled) SELECT 'admin', '$2a$10$zF7ERBkukVAC6D9kywj9KuSL35fMGgiSGBo/OOyC/TqgCxjySaP5.', TRUE
 WHERE NOT EXISTS (SELECT * FROM users WHERE username='admin');
+INSERT INTO users(username, password, enabled) SELECT 'vet', '$2a$10$gBTw0V5E9.zpq25RwV7x4e9qL40SL9z34D4UBGpHrth7DsoZyP8Hm', TRUE
+WHERE NOT EXISTS (SELECT * FROM users WHERE username='vet');
 
 INSERT INTO roles (username, role) SELECT 'admin', 'ROLE_OWNER_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=1);
 INSERT INTO roles (username, role) SELECT 'admin', 'ROLE_VET_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=2);
-INSERT INTO roles (username, role) SELECT'admin', 'ROLE_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=3);
+INSERT INTO roles (username, role) SELECT 'admin', 'ROLE_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=3);
+INSERT INTO roles (username, role) SELECT 'vet', 'ROLE_VET' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=4);
+INSERT INTO roles (username, role) SELECT 'vet', 'ROLE_OWNER_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=5);
+INSERT INTO roles (username, role) SELECT 'vet', 'ROLE_VET_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE id=6);

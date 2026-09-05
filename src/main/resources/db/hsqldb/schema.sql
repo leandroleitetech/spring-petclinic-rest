@@ -69,6 +69,8 @@ CREATE  TABLE users (
   username    VARCHAR(20) NOT NULL ,
   password    VARCHAR(60) NOT NULL ,
   enabled     BOOLEAN DEFAULT TRUE NOT NULL ,
+  reset_token VARCHAR(255),
+  reset_token_expiry TIMESTAMP,
   PRIMARY KEY (username)
 );
 

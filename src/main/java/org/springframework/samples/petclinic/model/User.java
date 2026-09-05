@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.model;
 
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +28,12 @@ public class User {
     @Column(name = "enabled")
     private Boolean enabled;
 
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    @Column(name = "reset_token_expiry")
+    private Instant resetTokenExpiry;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Role> roles;
 
@@ -52,6 +59,22 @@ public class User {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public Instant getResetTokenExpiry() {
+        return resetTokenExpiry;
+    }
+
+    public void setResetTokenExpiry(Instant resetTokenExpiry) {
+        this.resetTokenExpiry = resetTokenExpiry;
     }
 
     public Set<Role> getRoles() {

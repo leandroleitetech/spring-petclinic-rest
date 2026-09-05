@@ -68,10 +68,14 @@ INSERT INTO visits (pet_id, visit_date, description) VALUES
 
 -- Insert Admin User
 INSERT INTO users (username, password, enabled) VALUES
-('admin', '$2a$10$ymaklWBnpBKlgdMgkjWVF.GMGyvH8aDuTK.glFOaKw712LHtRRymS', TRUE);
+('admin', '$2a$10$zF7ERBkukVAC6D9kywj9KuSL35fMGgiSGBo/OOyC/TqgCxjySaP5.', TRUE),
+('vet', '$2a$10$gBTw0V5E9.zpq25RwV7x4e9qL40SL9z34D4UBGpHrth7DsoZyP8Hm', TRUE);
 
 -- Assign Roles to Admin
 INSERT INTO roles (username, role) VALUES 
 ('admin', 'ROLE_OWNER_ADMIN'),
 ('admin', 'ROLE_VET_ADMIN'),
-('admin', 'ROLE_ADMIN');
+('admin', 'ROLE_ADMIN'),
+('vet', 'ROLE_VET'),
+('vet', 'ROLE_OWNER_ADMIN'),
+('vet', 'ROLE_VET_ADMIN');
